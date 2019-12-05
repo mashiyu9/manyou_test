@@ -2,14 +2,11 @@
 
 ## User
 
-| culumn  | type    |
-| ------- | ------- |
-| name    | string  |
-| column  | column  |
-| will    | will    |
-| be      | be      |
-| left    | right   |
-| aligned | aligned |
+| culumn   | type   |
+| -------- | ------ |
+| name     | string |
+| email    | text   |
+| password | text   |
 
 ## Task
 
