@@ -89,7 +89,7 @@ RSpec.describe 'タスク管理機能', type: :system do
        it '該当タスクの内容が表示されたページに遷移すること' do
         task = create(:task)
         visit task_path(task.id)
-        (page).to have_content 'testuser1'
+        expect(page).to have_content 'testuser1'
        end
      end
   end
