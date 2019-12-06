@@ -1,7 +1,16 @@
 FactoryBot.define do
   factory :task do
-    title { "testuser1" }
-    content { "testcontent"}
-    id {1}
+    title { "suzuki" }
+    content { "hellow world"}
+  end
+
+  factory :task2, class: Task do
+    title { "tarou"}
+    content { "fugafuga"}
+  end
+
+  factory :task3, class: Task do
+    title { "tanaka"}
+    content { "hogehoge"}
   end
 end
