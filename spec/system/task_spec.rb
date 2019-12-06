@@ -45,13 +45,12 @@ RSpec.describe 'タスク管理機能', type: :system do
   end
 
   describe 'タスク詳細画面' do
-     context '任意のタスク詳細画面に遷移した場合' do
-       it '該当タスクの内容が表示されたページに遷移すること' do
+    context '任意のタスク詳細画面に遷移した場合' do
+      it '該当タスクの内容が表示されたページに遷移すること' do
         task = create(:task)
         visit task_path(task.id)
         expect(page).to have_content 'suzuki'
-       end
-     end
+      end
+    end
   end
-
 end
