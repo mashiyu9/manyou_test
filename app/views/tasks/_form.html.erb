@@ -23,12 +23,14 @@
 
   <div class="field">
     <%= form.label t('view.importance') %>
-    <%= form.text_area :importance %>
+    <%#<%= form.text_area :importance %>
+    <%= form.select :importance, [["高", "高"], ["中", "中"],  ["低", "低"]],  :prompt => "選択してください" %>
+
   </div>
 
   <div class="field">
     <%= form.label t('view.status') %>
-    <%= form.text_area :status %>
+    <%= form.select :status, [["未着手", "未着手"], ["作業中", "作業中"],  ["完了", "完了"]],  :prompt => "選択してください" %>
   </div>
 
   <div class="field">
