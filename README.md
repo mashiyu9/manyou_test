@@ -30,7 +30,7 @@
 
 1. アセットプリコンファイルの実行
 
-`rails assets:precompile RAILS_ENV=production`
+> `rails assets:precompile RAILS_ENV=production`
 
 2. git puch origin ブランチ名
 
@@ -38,4 +38,8 @@
 
 4. 必要に応じてデータベースの更新
 
-`heroku run rails db:migrate`
+> `heroku run rails db:migrate`
+
+6. heroku に必要に応じて環境変数を設定する
+
+> `heroku config:set 変数名=入れる値`
