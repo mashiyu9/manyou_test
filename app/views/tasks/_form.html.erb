@@ -21,6 +21,21 @@
     <%= form.text_area :content %>
   </div>
 
+  <div class="field">
+    <%= form.label t('view.importance') %>
+    <%= form.text_area :importance %>
+  </div>
+
+  <div class="field">
+    <%= form.label t('view.status') %>
+    <%= form.text_area :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label t('view.deadline') %>
+    <%= form.date_select :deadline %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

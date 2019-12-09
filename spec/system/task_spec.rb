@@ -1,4 +1,3 @@
-require 'byebug'
 require 'rails_helper'
 
 RSpec.describe 'タスク管理機能', type: :system do
@@ -8,9 +7,6 @@ RSpec.describe 'タスク管理機能', type: :system do
       @task1 = create(:task)
       @task2 = create(:task2)
       @task3 = create(:task3)
-    #   Task.create(:task)
-    #   Task.create(:task2)
-    #   Task.create(:task3)
     end
 
     context 'タスクを作成した場合' do
@@ -23,7 +19,7 @@ RSpec.describe 'タスク管理機能', type: :system do
     context 'タスク一覧画面に遷移した時' do
       it '作成日時の降順でタスクが表記される' do
         visit tasks_path
-        debugger
+        # debugger
         tasks = all('.task_list_parts')
         expect(tasks[0]).to have_content "tanaka"
         expect(tasks[1]).to have_content "tarou"
@@ -37,6 +33,9 @@ RSpec.describe 'タスク管理機能', type: :system do
         visit new_task_path
         fill_in 'task_title', with: "テストタイトル"
         fill_in 'task_content', with: 'テストコンテンツ'
+        fill_in 'task_importance', with: 'テストコンテンツ'
+        fill_in 'task_status', with: 'テストコンテンツ'
+
         click_button '登録する'
         visit tasks_path
         expect(page).to have_content 'テストタイトル'
