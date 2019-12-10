@@ -27,8 +27,18 @@
   </tbody>
 </table>
 
+<h2>検索</h2>
+<%= form_tag(tasks_path, method: :get) do %>
+  <%= text_field_tag :sort_title %>
+  <%= select_tag :sort_status, options_for_select(["作業中","完了","未着手"]) %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
+
+
+
 <br>
 
 <%= link_to t('view.new_task'), new_task_path %>
 <%= link_to t('view.return_sort'), tasks_path(sort_expired: "") %>
 <%= link_to t('view.deadline_sort'), tasks_path(sort_expired: "true") %>
+<%= link_to t('view.status_sort'), tasks_path(sort_status: "true") %>

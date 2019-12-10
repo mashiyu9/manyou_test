@@ -6,11 +6,16 @@ class Task < ApplicationRecord
   validates :deadline, presence: true
   validates :content, presence: true
 
+
   def self.tasks_order_desc_created_at
     self.all.order(created_at: :desc)
   end
 
   def self.tasks_order_asc_deadline
+    self.all.order(deadline: :asc)
+  end
+
+  def self.tasks_order_asc_status
     self.all.order(deadline: :asc)
   end
 

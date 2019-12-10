@@ -8,14 +8,21 @@ class TasksController < ApplicationController
     else
       @tasks = Task.tasks_order_desc_created_at
     end
+    if params[:sort_title] || params[:sort_status]
+      @tasks = Task.where(['title LIKE ? AND status LIKE ?', "%#{params[:sort_title]}%", "#{params[:sort_status]}"])
+    end
+    if params[:sort_status] == "true"
+      @tasks = Task.tasks_order_asc_status
+    end
+
+    @tasks_sort = Task.new
+  end
+
+  def search
   end
 
   # GET /tasks/1
   def show
-  end
-
-  def deadline
-    @tasks = Task.tasks_order_asc_deadline
   end
 
   # GET /tasks/new
