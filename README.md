@@ -2,25 +2,35 @@
 
 ## User
 
-- name: string
+| culumn   | type   |
+| -------- | ------ |
+| name     | string |
+| email    | text   |
+| password | text   |
 
 ## Task
 
-- user_id: references
-- title: string
-- content: text
-- importance: string
-- status: string
-- deadline: datetime
+| culumn     | type       |
+| ---------- | ---------- |
+| user_id    | references |
+| title      | string     |
+| content    | text       |
+| importance | string     |
+| status     | string     |
+| deadline   | datetime   |
 
-## label
+## Label
 
-- series: string
+| culumn | type   |
+| ------ | ------ |
+| series | string |
 
-## division
+## Division
 
-- task_id: reference
-- label_id: reference
+| culumn   | type       |
+| -------- | ---------- |
+| task_id  | references |
+| label_id | references |
 
 # Deployment
 
