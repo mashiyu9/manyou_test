@@ -1,0 +1,16 @@
+ja:
+  view:
+    tasks: タスク一覧
+    title: タイトル
+    content: 内容
+    show: 詳細
+    edit: 編集
+    delete: 削除
+    new_task: 新しいタスクの作成
+    index: タスク一覧
+    edit_task: タスクの編集
+    new_task: 新しいタスクを作成
+    task_name: タスク名
+    importance: 優先度
+    status: 状態
+    deadline: 期限
