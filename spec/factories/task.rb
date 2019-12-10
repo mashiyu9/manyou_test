@@ -6,7 +6,7 @@ FactoryBot.define do
       content { "hellow world"}
       importance { "低"}
       status { "完了"}
-      deadline { "12/11"}
+      deadline { "12/14"}
     end
 
     factory :task2, class: Task do
@@ -14,7 +14,7 @@ FactoryBot.define do
       content { "fugafuga"}
       importance { "低"}
       status { "完了"}
-      deadline { "12/11"}
+      deadline { "12/12"}
     end
 
     factory :task3, class: Task do

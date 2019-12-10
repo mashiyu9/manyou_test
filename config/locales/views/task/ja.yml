@@ -14,3 +14,6 @@ ja:
     importance: 優先度
     status: 状態
     deadline: 期限
+    deadlines: 期限間近!
+    deadline_sort: 終了期限でソートする
+    return_sort: 元に戻す

@@ -23,6 +23,14 @@ RSpec.describe 'タスク管理機能', type: :system do
         tasks = all('.task_list_parts')
         expect(tasks[0]).to have_content "tanaka"
         expect(tasks[1]).to have_content "tarou"
+        expect(tasks[2]).to have_content "suzuki"
+      end
+    end
+
+    context '終了期限順ボタンを押したとき' do
+      it '期限が近い順にソートされる' do
+        visit tasks_path
+        tasks = all('.task_list_parts')
       end
     end
   end
@@ -52,4 +60,5 @@ RSpec.describe 'タスク管理機能', type: :system do
       end
     end
   end
+
 end

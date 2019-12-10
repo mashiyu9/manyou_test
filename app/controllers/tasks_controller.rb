@@ -3,11 +3,19 @@ class TasksController < ApplicationController
 
   # GET /tasks
   def index
-    @tasks = Task.tasks_order_desc
+    if params[:sort_expired] == "true"
+      @tasks = Task.tasks_order_asc_deadline
+    else
+      @tasks = Task.tasks_order_desc_created_at
+    end
   end
 
   # GET /tasks/1
   def show
+  end
+
+  def deadline
+    @tasks = Task.tasks_order_asc_deadline
   end
 
   # GET /tasks/new
@@ -53,6 +61,6 @@ class TasksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def task_params
-      params.require(:task).permit(:title, :content, :status, :importance, :deadline)
+      params.require(:task).permit(:title, :content, :status, :importance, :deadline, :sort_expiredk)
     end
 end

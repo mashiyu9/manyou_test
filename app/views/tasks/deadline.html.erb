@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= t('view.tasks') %></h1>
+<h1><%= t('view.deadlines') %></h1>
 
 <table>
   <thead>
@@ -29,6 +29,5 @@
 
 <br>
 
-<%= link_to t('view.new_task'), new_task_path %>
-<%= link_to t('view.return_sort'), tasks_path(sort_expired: "") %>
-<%= link_to t('view.deadline_sort'), tasks_path(sort_expired: "true") %>
+<%= link_to t('view.index'), tasks_path %>
+<%= link_to t('view.deadline_sort'), deadline_tasks_path %>
