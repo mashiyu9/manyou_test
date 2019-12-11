@@ -1,19 +1,17 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  PER = 5
 
   # GET /tasks
   def index
     if params[:sort_expired] == "true"
-      @tasks = Task.tasks_order_asc_deadline
+      @tasks = Task.page(params[:page]).per(4).asc_deadline
+    elsif params[:sort_importance] == "true"
+      @tasks = Task.page(params[:page]).per(4).desc_importance
+    elsif params[:sort_title] || params[:sort_status]
+      # @tasks = Task.where(['title LIKE ? AND status LIKE ?', "%#{params[:sort_title]}%", "#{params[:sort_status]}"])
+      @tasks = Task.page(params[:page]).per(4).where_like_status_title(params[:sort_title], params[:sort_status])
     else
-      @tasks = Task.tasks_order_desc_created_at
-    end
-    if params[:sort_title] || params[:sort_status]
-      @tasks = Task.where(['title LIKE ? AND status LIKE ?', "%#{params[:sort_title]}%", "#{params[:sort_status]}"])
-    end
-    if params[:sort_importance] == "true"
-      @tasks = Task.tasks_order_desc_status
+      @tasks = Task.page(params[:page]).per(4).desc_created
     end
 
     @tasks_sort = Task.new
