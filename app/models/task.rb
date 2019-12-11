@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
 
-  enum importance:[:低, :中, :高]
+  enum importance:{低: 0, 中: 1, 高: 2}
 
   validates :title, presence: true, uniqueness: true
   validates :importance, presence: true

@@ -8,6 +8,20 @@ RSpec.describe 'タスク管理機能', type: :system do
       @task2 = create(:task2)
       @task3 = create(:task3)
     end
+    # before(:each) do
+    #   @request.env ||= {}
+
+    #   name = "testuser"
+    #   password = "123456"
+    #   @request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(user,pass)
+    # end
+
+    # before(:each) do
+    #   @request.env ||= {}
+    #   name = "TESTUSER"
+    #   password = "TESTPASS"
+    #   @request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(name, password)
+    # end
 
 
     context 'タスクを作成した場合' do
@@ -40,14 +54,14 @@ RSpec.describe 'タスク管理機能', type: :system do
     context '必要項目を入力して、createボタンを押した場合' do
       it 'データが保存されること' do
         visit new_task_path
-        fill_in 'task_title', with: "テストタイトル"
-        fill_in 'task_content', with: 'テストコンテンツ'
-        fill_in 'task_importance', with: 'テストコンテンツ'
-        fill_in 'task_status', with: 'テストコンテンツ'
-
+        fill_in 'task[title]', with: 'テストタイトルffffffffffff'
+        fill_in 'task[content]', with: 'テストコンテンツ'
+        select '高', from: 'task[importance]'
+        # fill_in 'task_status', with: '未着手'
+        select '完了', from: 'task[status]'
         click_button '登録する'
         visit tasks_path
-        expect(page).to have_content 'テストタイトル'
+        expect(page).to have_content '高'
       end
     end
   end

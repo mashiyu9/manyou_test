@@ -26,7 +26,7 @@ RSpec.describe 'タスク管理機能', type: :model do
   @task = Task.new(
     title: "aaa",
     content: "aaa",
-    importance: "ttt",
+    importance: 0,
     status: "sss"
   )
   expect(@task).to be_valid
@@ -57,13 +57,13 @@ RSpec.describe 'タスク管理機能', type: :model do
     task = Task.create(
       title: "aaa",
       content: "aaa",
-      importance: "afjef",
+      importance: 0,
       status: "sss"
     )
     dup_task = Task.new(
       title: "aaa",
       content: "bbb",
-      importance: "afe",
+      importance: 0,
       status: "sss"
     )
     dup_task.valid?
