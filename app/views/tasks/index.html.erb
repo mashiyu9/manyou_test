@@ -34,6 +34,12 @@
   <%= submit_tag 'Search', name: nil %>
 <% end %>
 
+<%= form_tag(tasks_path, method: :get) do %>
+  <%= select :status, :name,Task.importances.keys.to_a %>
+  <%= submit_tag 'Search', name: nil %>
+
+<% end %>
+
 
 
 <br>
@@ -41,4 +47,4 @@
 <%= link_to t('view.new_task'), new_task_path %>
 <%= link_to t('view.return_sort'), tasks_path(sort_expired: "") %>
 <%= link_to t('view.deadline_sort'), tasks_path(sort_expired: "true") %>
-<%= link_to t('view.status_sort'), tasks_path(sort_status: "true") %>
+<%= link_to t('view.status_sort'), tasks_path(sort_importance: "true") %>

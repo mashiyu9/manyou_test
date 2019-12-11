@@ -9,6 +9,7 @@ RSpec.describe 'タスク管理機能', type: :system do
       @task3 = create(:task3)
     end
 
+
     context 'タスクを作成した場合' do
       it '作成済みのタスクが表示されること' do
         visit tasks_path

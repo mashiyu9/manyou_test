@@ -1,5 +1,7 @@
 class Task < ApplicationRecord
 
+  enum importance:[:低, :中, :高]
+
   validates :title, presence: true, uniqueness: true
   validates :importance, presence: true
   validates :status, presence: true
@@ -15,8 +17,8 @@ class Task < ApplicationRecord
     self.all.order(deadline: :asc)
   end
 
-  def self.tasks_order_asc_status
-    self.all.order(deadline: :asc)
+  def self.tasks_order_desc_status
+    self.all.order(importance: :desc)
   end
 
 end
