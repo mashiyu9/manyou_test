@@ -1,5 +1,6 @@
 FactoryBot.define do
-  factory :task do
+  factory :task1, class: Task do
+    id {1}
     title { "suzuki" }
     content { "hellow world"}
     importance { 0}
@@ -14,4 +15,13 @@ FactoryBot.define do
     status { "完了"}
     deadline { "12/12"}
   end
+
+  factory :task3, class: Task do
+    title { "tanaka"}
+    content { "aaa"}
+    importance {2}
+    status { "完了"}
+    deadline { "12/10"}
+  end
+
 end
