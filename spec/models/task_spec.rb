@@ -6,17 +6,17 @@ RSpec.describe 'タスク管理機能', type: :model do
   @task = Task.new(
     title: "",
     content: "Brawn",
-    importance: "ttt",
+    importance: 0,
     status: "sss"
   )
   expect(@task).not_to be_valid
   end
 
-  it 'が空ならバリデーションが通らない' do
+  it 'contentが空ならバリデーションが通らない' do
   @task = Task.new(
     title: "aaa",
     content: "",
-    importance: "ttt",
+    importance: 0,
     status: "sss"
   )
   expect(@task).not_to be_valid
@@ -27,7 +27,8 @@ RSpec.describe 'タスク管理機能', type: :model do
     title: "aaa",
     content: "aaa",
     importance: 0,
-    status: "sss"
+    status: "sss",
+    deadline: "2019/11/10"
   )
   expect(@task).to be_valid
   end
@@ -36,7 +37,7 @@ RSpec.describe 'タスク管理機能', type: :model do
   @task = Task.new(
     title: "aaa",
     content: "aaa",
-    importance: "ttt",
+    importance: 0,
     status: ""
   )
   expect(@task).not_to be_valid
@@ -58,17 +59,17 @@ RSpec.describe 'タスク管理機能', type: :model do
       title: "aaa",
       content: "aaa",
       importance: 0,
-      status: "sss"
+      status: "sss",
+      deadline: "2099/4/2"
     )
     dup_task = Task.new(
       title: "aaa",
       content: "bbb",
       importance: 0,
-      status: "sss"
+      status: "sss",
+      deadline: "2015/12/5"
     )
-    dup_task.valid?
-    expect(dup_task.errors.messages[:title]).to include('はすでに存在します')
-    # expect(dup_task.valid?).to eq(false)
+    expect(dup_task).not_to be_valid
 
 
   end

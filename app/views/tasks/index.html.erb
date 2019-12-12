@@ -31,8 +31,8 @@
 
 <h2>検索</h2>
 <%= form_tag(tasks_path, method: :get) do %>
-  <%= text_field_tag :sort_title %>
-  <%= select_tag :sort_status, options_for_select(["作業中","完了","未着手"]) %>
+  <%= text_field_tag :sort_title, "",{placeholder: "タイトルを入力"} %>
+  <%= select_tag :sort_status, options_for_select(["作業中","完了","未着手"]), include_blank: "タスクの状態" %>
   <%= submit_tag 'Search', name: nil %>
 <% end %>
 
