@@ -1,3 +1,56 @@
-// Place all the styles related to the tasks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  margin: 0;
+}
+header{
+  height: 60px;
+  background-color: #233961;
+}
+
+footer{
+  margin-top: 40px;
+  height: 60px;
+  background: #233961;
+}
+.wrapper{
+  min-height: 650px
+}
+
+.index_table{
+  table-layout: fixed;
+  width: 100%;
+  td{
+    word-break : break-all;
+  }
+  tr{
+    height: 40px;
+  }
+  .list_importance{
+    width: 80px;
+    text-align: center;
+  }
+  .list_importance_td{
+    text-align: center;
+  }
+  .list_status{
+    width: 80px;
+    text-align: center;
+  }
+  .list_status_td{
+    text-align: center;
+  }
+  .list_deadline{
+    width: 180px;
+    text-align: center;
+  }
+  .list_deadline_td{
+    text-align: center;
+  }
+
+
+
+
+  .list_button{
+    width: 40px;
+  }
+}
+

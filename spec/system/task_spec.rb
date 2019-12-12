@@ -42,10 +42,19 @@ RSpec.describe 'タスク管理機能', type: :system do
       end
     end
 
+    context '重要度ボタンを押した時' do
+      it '重要度が高い順にソートされる' do
+        visit tasks_path
+        tasks = all('.task_list_parts')
+        expect(tasks[0]).to have_content "高"
+      end
+    end
+
     context '終了期限順ボタンを押したとき' do
       it '期限が近い順にソートされる' do
         visit tasks_path
         tasks = all('.task_list_parts')
+        expect(tasks[0]).to have_content "tanaka"
       end
     end
   end
@@ -57,7 +66,6 @@ RSpec.describe 'タスク管理機能', type: :system do
         fill_in 'task[title]', with: 'テストタイトルffffffffffff'
         fill_in 'task[content]', with: 'テストコンテンツ'
         select '高', from: 'task[importance]'
-        # fill_in 'task_status', with: '未着手'
         select '完了', from: 'task[status]'
         click_button '登録する'
         visit tasks_path

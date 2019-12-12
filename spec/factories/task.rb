@@ -12,7 +12,7 @@ FactoryBot.define do
     factory :task2, class: Task do
       title { "tarou"}
       content { "fugafuga"}
-      importance { 0}
+      importance { 1}
       status { "完了"}
       deadline { "12/12"}
     end
@@ -20,7 +20,7 @@ FactoryBot.define do
     factory :task3, class: Task do
       title { "tanaka"}
       content { "hogehoge"}
-      importance {0}
+      importance {2}
       status { "完了"}
       deadline { "12/11"}
     end
