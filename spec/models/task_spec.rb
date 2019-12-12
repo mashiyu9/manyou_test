@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'タスク管理機能', type: :model do
   it 'titleが空ならバリデーションが通らない' do
-  # @task = create(:task_null_test1)
   @task = Task.new(
     title: "",
     content: "Brawn",
@@ -73,22 +72,21 @@ RSpec.describe 'タスク管理機能', type: :model do
   end
 
   it "入力された文字列に当てはまるタイトルを持つタスクがあるか確認" do
-    task1 = Task.create(
-      title: "title",
-      content: "aaa",
-      importance: 0,
-      status: "sss",
-      deadline: "2099/4/2"
-    )
-    task2 = Task.create(
-      title: "aaa",
-      content: "aaa",
-      importance: 0,
-      status: "sss",
-      deadline: "2099/4/2"
-    )
-    expect(Task.where_like_status_title("title", "")).to include(task1)
-
+    task1 = create(:task)
+    task2 = create(:task2)
+    expect(Task.where_like_status_title("tarou", "")).to include(task2)
   end
-end
 
+  it "選択された状態に当てはまるタスクを確認" do
+    task1 = create(:task)
+    task2 = create(:task2)
+    expect(Task.where_like_status_title("", "完了")).to include(task1,task2)
+  end
+
+  it "入力された文字列、状態に当てはまるタスクがあるか確認" do
+    task1 = create(:task)
+    task2 = create(:task2)
+    expect(Task.where_like_status_title("tarou", "完了")).to include(task2)
+  end
+
+end
