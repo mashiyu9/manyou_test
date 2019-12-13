@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :task1, class: Task do
-    id {1}
     title { "suzuki" }
     content { "hellow world"}
     importance { 0}
     status { "完了"}
-    deadline { "12/14"}
+    deadline { "12-14"}
+    created_at {"2001-11-10"}
   end
 
   factory :task2, class: Task do
@@ -13,7 +13,9 @@ FactoryBot.define do
     content { "fugafuga"}
     importance { 1}
     status { "完了"}
-    deadline { "12/12"}
+    deadline { "12-12"}
+    created_at {"2002-11-10"}
+
   end
 
   factory :task3, class: Task do
@@ -21,7 +23,9 @@ FactoryBot.define do
     content { "aaa"}
     importance {2}
     status { "完了"}
-    deadline { "12/10"}
+    deadline { "12-10"}
+    created_at {"2003-11-10"}
+
   end
 
 end

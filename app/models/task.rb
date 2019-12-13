@@ -8,11 +8,9 @@ class Task < ApplicationRecord
   validates :deadline, presence: true
   validates :content, presence: true
 
-  # scope :task_desc, -> (test) {order(test: :desc)}
   scope :desc_created, -> {order(created_at: :desc)}
   scope :asc_deadline, -> {order(deadline: :asc)}
   scope :desc_importance, -> {order(importance: :desc)}
   scope :where_like_status_title, -> (title, status) {where(['title LIKE ? AND status LIKE ?', "%#{title}%", "%#{status}%"])}
-  # scope :kaminari -> {page(params[:page]).per(4)}
 
 end

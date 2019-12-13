@@ -4,15 +4,30 @@ body{
 header{
   height: 60px;
   background-color: #233961;
+  color: #fff;
+  h1{
+    vertical-align: middle;
+    margin: 10px 0 0;
+  }
+
 }
 
 footer{
   margin-top: 40px;
   height: 60px;
   background: #233961;
+  color: #fff;
+  h1{
+    vertical-align: middle;
+    margin: 10px 0 0;
+  }
 }
 .wrapper{
-  min-height: 650px
+  margin-top: 30px;
+  min-height: 600px;
+}
+.index_title{
+  padding-top: 20px;
 }
 
 .index_table{
@@ -20,37 +35,52 @@ footer{
   width: 100%;
   td{
     word-break : break-all;
+    padding: 20px 0;
   }
   tr{
     height: 40px;
   }
+  .task_list_parts{
+    border-bottom: 1px solid #eee;
+  }
+  .task_list_parts:first-child{
+    border-top: 1px solid #eee;
+  }
   .list_importance{
-    width: 80px;
+    width: 60px;
     text-align: center;
   }
   .list_importance_td{
     text-align: center;
   }
   .list_status{
-    width: 80px;
+    width: 60px;
     text-align: center;
   }
   .list_status_td{
     text-align: center;
   }
   .list_deadline{
-    width: 180px;
+    width: 110px;
     text-align: center;
   }
   .list_deadline_td{
     text-align: center;
   }
 
-
-
-
   .list_button{
     width: 40px;
   }
 }
 
+.search_form{
+  padding-top: 20px;
+}
+
+/////////
+
+.task_parts{
+  p{
+    padding: 20px 0;
+  }
+}

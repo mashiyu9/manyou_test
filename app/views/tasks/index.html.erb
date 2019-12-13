@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= t('view.tasks') %></h1>
+<h1 class="index_title"><%= t('view.tasks') %></h1>
 
 <table class="index_table">
   <thead>
@@ -36,7 +36,7 @@
 
 </table>
 
-<h2>検索</h2>
+<h3 class="search_form">検索</h3>
 <%= form_tag(tasks_path, method: :get) do %>
   <%= text_field_tag :sort_title, "",{placeholder: "タイトルを入力"} %>
   <%= select_tag :sort_status, options_for_select(["作業中","完了","未着手"]), include_blank: "タスクの状態" %>
@@ -45,5 +45,5 @@
 
 <br>
 
-<%= link_to t('view.new_task'), new_task_path %>
-<%= link_to t('view.return_sort'), tasks_path(sort_expired: "") %>
+<p><%= link_to t('view.new_task'), new_task_path %> |
+<%= link_to t('view.return_sort'), tasks_path(sort_expired: "") %></p>

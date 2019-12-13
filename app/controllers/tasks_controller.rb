@@ -64,6 +64,7 @@ class TasksController < ApplicationController
   def set_task
     @task = Task.find(params[:id])
   end
+
   # Only allow a trusted parameter "white list" through.
   def task_params
     params.require(:task).permit(:title, :content, :status, :importance, :deadline, :sort_expired)
