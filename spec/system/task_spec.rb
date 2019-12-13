@@ -31,7 +31,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         visit tasks_path
         tasks = all('.task_list_parts')
         click_on '優先度'
-        expect(tasks[0]).to have_content "高"
+        expect(tasks[0]).to have_content 2
       end
     end
 
