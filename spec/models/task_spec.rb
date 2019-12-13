@@ -83,17 +83,17 @@ RSpec.describe 'タスク管理機能', type: :model do
   end
 
   it '期限が近い順でタスクがソートされているか確認' do
-    tasks = Array.new.push(@task3, @task2, @task1)
+    tasks = Array.new.push(@task3, @task1, @task2)
     expect(Task.asc_deadline).to eq(tasks)
   end
 
   it '重要度が高い順でタスクがソートされているか確認' do
-    tasks = Array.new.push(@task3, @task2, @task1)
+    tasks = Array.new.push(@task2, @task3, @task1)
     expect(Task.desc_importance).to eq(tasks)
   end
 
   it "入力された文字列に当てはまるタイトルを持つタスクがあるか確認" do
-    expect(Task.where_like_status_title("tarou", "")).to include(@task2)
+    expect(Task.where_like_status_title("tanaka", "")).to include(@task3)
   end
 
   it "選択された状態に当てはまるタスクを確認" do

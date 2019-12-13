@@ -29,9 +29,9 @@ RSpec.describe 'タスク管理機能', type: :system do
     context '重要度ボタンを押した時' do
       it '重要度が高い順にソートされる' do
         visit tasks_path
-        tasks = all('.task_list_parts')
         click_on '優先度'
-        expect(tasks[0]).to have_content 2
+        all('tbody td')[5].click_link '詳細'
+        expect(page).to have_content "高"
       end
     end
 

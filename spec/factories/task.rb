@@ -11,9 +11,9 @@ FactoryBot.define do
   factory :task2, class: Task do
     title { "tarou"}
     content { "fugafuga"}
-    importance { 1}
+    importance { 2}
     status { "完了"}
-    deadline { "12-12"}
+    deadline { "12-16"}
     created_at {"2002-11-10"}
 
   end
@@ -21,8 +21,8 @@ FactoryBot.define do
   factory :task3, class: Task do
     title { "tanaka"}
     content { "aaa"}
-    importance {2}
-    status { "完了"}
+    importance {1}
+    status { "未着手"}
     deadline { "12-10"}
     created_at {"2003-11-10"}
 
