@@ -16,7 +16,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+        redirect_to tasks_path, notice: t('view.succes_create_user')
+        session[:user_id] = user.id
     else
       render :new
     end
@@ -43,6 +44,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.fetch(:user, {})
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 end
