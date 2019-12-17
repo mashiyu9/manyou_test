@@ -1,28 +1,45 @@
 require 'rails_helper'
 
 RSpec.describe 'タスク管理機能', type: :system do
+  before do
+    @task1 = create(:task1)
+    @task2 = create(:task2)
+    @task3 = create(:task3)
+  end
 
   describe 'タスク一覧画面' do
-    before do
-      @task1 = create(:task)
-      @task2 = create(:task2)
-      @task3 = create(:task3)
-    end
 
     context 'タスクを作成した場合' do
       it '作成済みのタスクが表示されること' do
         visit tasks_path
-        expect(page).to have_content 'suzuki'
+        expect(page).to have_content 'fugafuga'
       end
     end
 
     context 'タスク一覧画面に遷移した時' do
       it '作成日時の降順でタスクが表記される' do
         visit tasks_path
-        # debugger
+        tasks = all('.task_list_parts')
+        expect(tasks[0]).to have_content "aaa"
+        expect(tasks[1]).to have_content "fugafuga"
+        expect(tasks[2]).to have_content "hellow world"
+      end
+    end
+
+    context '重要度ボタンを押した時' do
+      it '重要度が高い順にソートされる' do
+        visit tasks_path
+        click_on '優先度'
+        all('tbody td')[5].click_link '詳細'
+        expect(page).to have_content "高"
+      end
+    end
+
+    context '終了期限順ボタンを押したとき' do
+      it '期限が近い順にソートされる' do
+        visit tasks_path
         tasks = all('.task_list_parts')
         expect(tasks[0]).to have_content "tanaka"
-        expect(tasks[1]).to have_content "tarou"
       end
     end
   end
@@ -31,14 +48,13 @@ RSpec.describe 'タスク管理機能', type: :system do
     context '必要項目を入力して、createボタンを押した場合' do
       it 'データが保存されること' do
         visit new_task_path
-        fill_in 'task_title', with: "テストタイトル"
-        fill_in 'task_content', with: 'テストコンテンツ'
-        fill_in 'task_importance', with: 'テストコンテンツ'
-        fill_in 'task_status', with: 'テストコンテンツ'
-
+        fill_in 'task[title]', with: 'テストタイトルffffffffffff'
+        fill_in 'task[content]', with: 'テストコンテンツ'
+        select '高', from: 'task[importance]'
+        select '完了', from: 'task[status]'
         click_button '登録する'
         visit tasks_path
-        expect(page).to have_content 'テストタイトル'
+        expect(page).to have_content '高'
       end
     end
   end
@@ -46,9 +62,9 @@ RSpec.describe 'タスク管理機能', type: :system do
   describe 'タスク詳細画面' do
     context '任意のタスク詳細画面に遷移した場合' do
       it '該当タスクの内容が表示されたページに遷移すること' do
-        task = create(:task)
-        visit task_path(task.id)
-        expect(page).to have_content 'suzuki'
+
+        visit task_path(@task1)
+        expect(page).to have_content 'hellow world'
       end
     end
   end

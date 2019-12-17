@@ -1,69 +1,31 @@
 FactoryBot.define do
-
-  FactoryBot.define do
-    factory :task do
-      title { "suzuki" }
-      content { "hellow world"}
-      importance { "低"}
-      status { "完了"}
-      deadline { "12/11"}
-    end
-
-    factory :task2, class: Task do
-      title { "tarou"}
-      content { "fugafuga"}
-      importance { "低"}
-      status { "完了"}
-      deadline { "12/11"}
-    end
-
-    factory :task3, class: Task do
-      title { "tanaka"}
-      content { "hogehoge"}
-      importance { "低"}
-      status { "完了"}
-      deadline { "12/11"}
-    end
-
-    factory :task4, class: Task do
-      title { "aaa"}
-      content { "hogehoge"}
-      importance { "低"}
-      status { "完了"}
-      deadline { "12/11"}
-    end
-  end
-  factory :task_null_test1, class: Task do
-    title {''}
-    content {"hellow world"}
-    importance {"低"}
-    status {"完了"}
+  factory :task1, class: Task do
+    title { "suzuki" }
+    content { "hellow world"}
+    importance { 0}
+    status { "完了"}
+    deadline { "12-14"}
+    created_at {"2001-11-10"}
   end
 
-  factory :task_null_test2, class: Task do
-    title {"tarou"}
-    content {""}
-    status {"hellow world"}
-    importance {"低"}
+  factory :task2, class: Task do
+    title { "tarou"}
+    content { "fugafuga"}
+    importance { 2}
+    status { "完了"}
+    deadline { "12-16"}
+    created_at {"2002-11-10"}
+
   end
 
-  factory :task_null_test3, class: Task do
-    title {"tanaka"}
-    content {"hogehoge"}
-    status {"hellow world"}
-    importance {"低"}
+  factory :task3, class: Task do
+    title { "tanaka"}
+    content { "aaa"}
+    importance {1}
+    status { "未着手"}
+    deadline { "12-10"}
+    created_at {"2003-11-10"}
+
   end
 
-  factory :task_unique_test1, class: Task do
-    title {"tanaka"}
-    content {"hogehoge"}
-    status {"hellow world"}
-    importance {"低"}
-  end
-  factory :task_unique_test2, class: Task do
-    title {"tanaka"}
-    content {"fugafuga"}
-    status {"aaaaaaaaaaaaa"}
-    importance {"高"}
-  end
 end

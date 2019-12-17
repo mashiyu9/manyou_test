@@ -1,3 +1,96 @@
-// Place all the styles related to the tasks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  margin: 0;
+}
+header{
+  height: 60px;
+  background-color: #233961;
+  color: #fff;
+  h1{
+    vertical-align: middle;
+    margin: 10px 0 0;
+  }
+
+}
+
+footer{
+  margin-top: 40px;
+  height: 60px;
+  background: #233961;
+  color: #fff;
+  h1{
+    vertical-align: middle;
+    margin: 10px 0 0;
+  }
+}
+.wrapper{
+  margin-top: 30px;
+  min-height: 600px;
+}
+.index_title{
+  padding-top: 20px;
+}
+
+.index_table{
+  table-layout: fixed;
+  width: 100%;
+  td{
+    word-break : break-all;
+    padding: 20px 0;
+  }
+  tr{
+    height: 40px;
+  }
+  .task_list_parts{
+    border-bottom: 1px solid #eee;
+  }
+  .task_list_parts:first-child{
+    border-top: 1px solid #eee;
+  }
+  .list_importance{
+    width: 60px;
+    text-align: center;
+  }
+  .list_importance_td{
+    text-align: center;
+  }
+  .list_status{
+    width: 60px;
+    text-align: center;
+  }
+  .list_status_td{
+    text-align: center;
+  }
+  .list_deadline{
+    width: 110px;
+    text-align: center;
+  }
+  .list_deadline_td{
+    text-align: center;
+  }
+
+  .list_button{
+    width: 40px;
+  }
+}
+
+.search_form{
+  padding-top: 20px;
+}
+
+.task_none{
+  margin-top: 40px;
+}
+
+.task_none{
+  p{
+    padding: 10px 0 40px;
+  }
+}
+
+/////////
+
+.task_parts{
+  p{
+    padding: 20px 0;
+  }
+}

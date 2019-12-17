@@ -14,3 +14,10 @@ ja:
     importance: 優先度
     status: 状態
     deadline: 期限
+    deadlines: 期限間近!
+    deadline_sort: 終了期限でソートする
+    return_sort: タスク一覧
+    status_sort: 状態でソート
+    importance_sort: 重要度でソート
+    save_errors: タスクの作成に失敗しました
+    error: エラー

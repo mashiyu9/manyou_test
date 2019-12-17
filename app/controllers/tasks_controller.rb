@@ -3,7 +3,21 @@ class TasksController < ApplicationController
 
   # GET /tasks
   def index
-    @tasks = Task.tasks_order_desc
+    if params[:sort_expired] == "true"
+      @tasks = Task.page(params[:page]).per(5).asc_deadline
+    elsif params[:sort_importance] == "true"
+      @tasks = Task.page(params[:page]).per(5).desc_importance
+    elsif params[:sort_title] || params[:sort_status]
+      # @tasks = Task.where(['title LIKE ? AND status LIKE ?', "%#{params[:sort_title]}%", "#{params[:sort_status]}"])
+      @tasks = Task.page(params[:page]).per(5).where_like_status_title(params[:sort_title], params[:sort_status])
+    else
+      @tasks = Task.page(params[:page]).per(5).desc_created
+    end
+
+    @tasks_sort = Task.new
+  end
+
+  def search
   end
 
   # GET /tasks/1
@@ -47,12 +61,12 @@ class TasksController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_task
-      @task = Task.find(params[:id])
-    end
+  def set_task
+    @task = Task.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def task_params
-      params.require(:task).permit(:title, :content, :status, :importance, :deadline)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def task_params
+    params.require(:task).permit(:title, :content, :status, :importance, :deadline, :sort_expired)
+  end
 end

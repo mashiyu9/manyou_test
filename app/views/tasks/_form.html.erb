@@ -1,7 +1,7 @@
 <%= form_with(model: task, local: true) do |form| %>
   <% if task.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+      <h2><%= pluralize(task.errors.count, "#{t('view.error')}") %> <%= t('view.save_errors') %></h2>
 
       <ul>
       <% task.errors.full_messages.each do |message| %>
@@ -24,13 +24,13 @@
   <div class="field">
     <%= form.label t('view.importance') %>
     <%#<%= form.text_area :importance %>
-    <%= form.select :importance, [["高", "高"], ["中", "中"],  ["低", "低"]],  :prompt => "選択してください" %>
+    <%= form.select :importance, [["高", "高"], ["中", "中"],  ["低", "低"]] %>
 
   </div>
 
   <div class="field">
     <%= form.label t('view.status') %>
-    <%= form.select :status, [["未着手", "未着手"], ["作業中", "作業中"],  ["完了", "完了"]],  :prompt => "選択してください" %>
+    <%= form.select :status, [["未着手", "未着手"], ["作業中", "作業中"],  ["完了", "完了"]] %>
   </div>
 
   <div class="field">
