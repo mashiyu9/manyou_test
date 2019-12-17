@@ -1,0 +1,23 @@
+ja:
+  view:
+    tasks: タスク一覧
+    title: タイトル
+    content: 内容
+    show: 詳細
+    edit: 編集
+    delete: 削除
+    new_task: 新しいタスクの作成
+    index: タスク一覧
+    edit_task: タスクの編集
+    new_task: 新しいタスクを作成
+    task_name: タスク名
+    importance: 優先度
+    status: 状態
+    deadline: 期限
+    deadlines: 期限間近!
+    deadline_sort: 終了期限でソートする
+    return_sort: タスク一覧
+    status_sort: 状態でソート
+    importance_sort: 重要度でソート
+    save_errors: タスクの作成に失敗しました
+    error: エラー
