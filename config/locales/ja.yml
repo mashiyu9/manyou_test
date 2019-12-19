@@ -210,3 +210,5 @@ ja:
     success_task: 'タスクを作成しました'
     edit_task: 'タスクを編集しました'
     destroy_task: 'タスクを削除しました'
+    profile: 'マイページ'
+    logout: "ログアウト"

@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :req_login, only: [:show, :edit, :update, :destroy]
 
   def show
+    unless current_user.id == @user.id
+      redirect_to tasks_path
+    end
   end
 
   def new
+    redirect_to tasks_path if logged_in?
     @user = User.new
   end
 
@@ -16,8 +20,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-        redirect_to tasks_path, notice: t('view.succes_create_user')
-        session[:user_id] = user.id
+      session[:user_id] = @user.id
+      redirect_to tasks_path, notice: t('view.succes_create_user')
     else
       render :new
     end
@@ -45,5 +49,12 @@ class UsersController < ApplicationController
 
     def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+
+    def req_login
+      unless logged_in?
+
+        redirect_to new_session_path
+      end
     end
 end
