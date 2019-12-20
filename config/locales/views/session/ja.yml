@@ -3,3 +3,6 @@ ja:
     title: ログイン
     logout: ログアウトしました。
     login: ログインしました
+    email: メールアドレス
+    password: パスワード
+    submit: ログイン
