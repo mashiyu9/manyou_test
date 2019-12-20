@@ -141,6 +141,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         visit tasks_path
         click_on '優先度'
         all('tbody td')[5].click_link '詳細'
+        sleep 1
         expect(page).to have_content "高"
       end
     end

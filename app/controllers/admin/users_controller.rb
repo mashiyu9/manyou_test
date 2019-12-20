@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
-    @users = User.select(:id, :name, :email, :admin, :created_at).order("created_at DESC")
+    @users = User.order("created_at DESC").includes(:tasks)
   end
 
   def create
@@ -20,7 +20,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -37,10 +36,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    # @tasks = Task.all.includes(:user)
-    # @tasks = Task.all
-    # @tasks = Task.includes(:user).where(user_id: @user.id)
-    @tasks = @user.tasks
   end
 
   private
@@ -50,7 +45,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.includes(:tasks).references(:users).find(params[:id])
   end
 
   def admin_user

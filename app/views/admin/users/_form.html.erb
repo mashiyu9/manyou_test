@@ -18,7 +18,7 @@
   <%= form.email_field :email %>
 
   <%= form.label t('admin.admin_confirm') %>
-  <%= form.select :admin, [["false", "無"], ["true", "有"]] %>
+  <%= form.select :admin, [["無", false], ["有", "true"]] %>
 
   <%= form.label t('view.password') %>
   <%= form.password_field :password %>
