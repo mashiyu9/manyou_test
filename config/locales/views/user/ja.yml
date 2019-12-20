@@ -1,0 +1,22 @@
+ja:
+  view:
+    new: 新規登録
+    name: お名前
+    email: メールアドレス
+    password: パスワード
+    password_confirmation: パスワードの確認
+    back: タスク一覧へ
+    succes_create_user: ユーザー登録しました
+    user_index: ユーザー一覧
+    user: ユーザー名
+  admin:
+    admin_confirm: 管理者権限
+    users: ユーザー一覧
+    task_count: タスクの数
+    name: お名前
+    email: メールアドレス
+    back: 戻る
+    create_user: 管理者権限でユーザーを作成
+  users:
+    destroy: ユーザーを削除しました
+    false_destroy: 管理者権限のあるユーザーがいなくなってしまいます

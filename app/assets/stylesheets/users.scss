@@ -1,0 +1,19 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.text-align_center{
+  text-align: center;
+}
+table{
+  tr{
+    .admin_confirm{
+      width: 100px;
+    }
+    .tasks_count{
+      width: 100px;
+    }
+  }
+  td{
+    padding: 20px, 5px
+  }
+}

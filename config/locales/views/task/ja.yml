@@ -21,3 +21,5 @@ ja:
     importance_sort: 重要度でソート
     save_errors: タスクの作成に失敗しました
     error: エラー
+    logout: ログアウトしました
+    login: ログインしました

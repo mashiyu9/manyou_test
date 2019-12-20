@@ -17,6 +17,18 @@
     
   </header>
   <div class="wrapper container">
+
+    <% if logged_in? %>
+      <%= link_to t('layout.profile'), user_path(current_user.id) %>
+      <%= link_to t('layout.logout'), session_path(current_user.id), method: :delete %>
+    <% else %>
+      <%= link_to t('layout.sign_up'), new_user_path %>
+      <%= link_to t('layout.login'), new_session_path %>
+    <% end %>
+
+    <p id="notice"><%= notice %></p>
+
+
     <%= yield %>
   </div>
   <footer class="container-fluid">

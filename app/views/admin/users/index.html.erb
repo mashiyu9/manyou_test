@@ -1,0 +1,33 @@
+
+<h1 class="index_title"><%= t('admin.users') %></h1>
+
+<table class="index_table">
+  <thead>
+    <tr>
+      <th><%= t('admin.name') %></th>
+      <th><%= t('admin.email') %></th>
+      <th class="admin_confirm text-align_center"><%= t('admin.admin_confirm') %></th>
+      <th class="tasks_count text-align_center"><%= t('admin.task_count') %></th>
+      <th class="list_button"></th>
+      <th class="list_button"></th>
+      <th class="list_button"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr class= "task_list_parts">
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td class="text-align_center"><%= user.admin %></td>
+        <td class="text-align_center"><%= user.tasks.size %></td>
+        <td><%= link_to t('view.show'), admin_user_path(user) %></td>
+        <td><%= link_to t('view.edit'), edit_admin_user_path(user) %></td>
+        <td><%= link_to t('view.delete'), admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to t('admin.create_user'), new_admin_user_path %>
