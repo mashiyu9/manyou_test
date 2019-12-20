@@ -31,8 +31,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    redirect_to admin_users_path, notice: 'User was successfully destroyed.'
+    if @user.destroy
+      redirect_to admin_users_path, notice: t('users.destroy')
+    else
+      redirect_to admin_users_path, notice: t('users.false_destroy')
+    end
   end
 
   def show

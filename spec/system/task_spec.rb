@@ -4,6 +4,9 @@ RSpec.describe 'タスク管理機能', type: :system do
   before do
 
     @user = create(:user, password: "password")
+    @user2 = create(:user, password: "password")
+    @user3 = create(:user, password: "password")
+    @user4 = create(:user, password: "password")
     @admin_user = create(:user, password: "password", admin: true)
 
     @task1 = create(:task1, user_id: @user.id)
@@ -57,7 +60,10 @@ RSpec.describe 'タスク管理機能', type: :system do
     context '管理者画面' do
       it 'ユーザーの一覧が表示される' do
         visit admin_users_path
-        expect(page).to have_content 'ユーザー一覧'
+        expect(page).to have_content @user.name
+        expect(page).to have_content @user2.name
+        expect(page).to have_content @user3.name
+        expect(page).to have_content @user4.name
       end
 
       it 'ユーザーを新規作成することができる' do
@@ -140,8 +146,9 @@ RSpec.describe 'タスク管理機能', type: :system do
       it '重要度が高い順にソートされる' do
         visit tasks_path
         click_on '優先度'
+        sleep 2
         all('tbody td')[5].click_link '詳細'
-        sleep 1
+        sleep 2
         expect(page).to have_content "高"
       end
     end
