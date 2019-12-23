@@ -36,6 +36,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.9.0'
   gem "factory_bot_rails"
   gem 'spring-commands-rspec'
+  gem 'database_cleaner'
 end
 
 group :development do
