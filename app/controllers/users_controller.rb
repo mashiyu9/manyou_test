@@ -24,6 +24,11 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
+      arry = [:ruby, :javascript, :html , :css, :php]
+      arry.each do |x|
+        @label = @user.labels.build(series: x)
+        @label.save
+      end
       redirect_to tasks_path, notice: t('view.succes_create_user')
     else
       render :new
@@ -46,18 +51,18 @@ class UsersController < ApplicationController
   end
 
   private
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def user_params
+  def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
+  end
 
-    def req_login
-      unless logged_in?
+  def req_login
+    unless logged_in?
 
-        redirect_to new_session_path
-      end
+      redirect_to new_session_path
     end
+  end
 end

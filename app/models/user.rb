@@ -23,4 +23,6 @@ class User < ApplicationRecord
     raise ActiveRecord::Rollback  if User.where(admin: true).count == 0
   end
 
+
+
 end
