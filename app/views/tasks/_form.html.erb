@@ -38,6 +38,12 @@
     <%= form.date_select :deadline %>
   </div>
 
+  <div class="field">
+    <%= form.label t('view.deadline') %>
+    <%= form.collection_check_boxes(:label_ids, @labels, :id, :series) %>
+  </div>
+
+
   <div class="actions">
     <%= form.submit %>
   </div>

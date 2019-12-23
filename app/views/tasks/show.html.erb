@@ -31,6 +31,10 @@
   </p>
 </div>
 
+  <% @task.labels.each do |label| %>
+    <%= label.series %>
+  <% end %>
+
 
 <%= link_to t('view.edit'), edit_task_path(@task) %> |
 <%= link_to t('view.index'), tasks_path %> 
