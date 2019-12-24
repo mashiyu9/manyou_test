@@ -11,8 +11,10 @@ class TasksController < ApplicationController
     elsif params[:sort_title] || params[:sort_status]
       # @tasks = Task.where(['title LIKE ? AND status LIKE ?', "%#{params[:sort_title]}%", "#{params[:sort_status]}"])
       @tasks = Task.page(params[:page]).per(5).where(user_id: current_user.id).where_like_status_title(params[:sort_title], params[:sort_status])
+    elsif params[:label_id].present?
+      @tasks = Task.page(params[:page]).per(5).all
+      @tasks = @tasks.joins(:labels).where(labels: { id: params[:label_id] })
     else
-      # @tasks = Task.page(params[:page]).per(5).desc_created
       @tasks = Task.page(params[:page]).per(5).where(user_id: current_user.id).desc_created
     end
 
@@ -29,16 +31,19 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @labels = current_user.labels
   end
 
   # GET /tasks/1/edit
   def edit
+     @labels = current_user.labels
   end
 
   # POST /tasks
   def create
     @task = Task.new(task_params)
     @task.user_id = current_user.id
+    @labels = @task.labels
     # @task = current_user.tasks.build(task_params)
 
     if @task.save
@@ -71,7 +76,7 @@ class TasksController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def task_params
-    params.require(:task).permit(:title, :content, :status, :importance, :deadline, :sort_expired)
+    params.require(:task).permit(:title, :content, :status, :importance, :deadline, :sort_expired, { label_ids: [] })
   end
 
   def req_login

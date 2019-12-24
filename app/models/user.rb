@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :tasks, :dependent => :destroy
+  has_many :labels, :dependent => :destroy
 
 
 
@@ -21,5 +22,7 @@ class User < ApplicationRecord
   def admin_user_present?
     raise ActiveRecord::Rollback  if User.where(admin: true).count == 0
   end
+
+
 
 end

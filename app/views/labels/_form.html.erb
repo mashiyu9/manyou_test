@@ -1,0 +1,20 @@
+<%= form_with(model: label, local: true) do |form| %>
+  <% if label.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(label.errors.count, "#{t('view.error')}") %> <%= t('view.save_errors') %></h2>
+
+      <ul>
+      <% label.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label t('label.name') %>
+  <%= form.text_field :series %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

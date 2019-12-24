@@ -30,6 +30,12 @@
     <%= @task.deadline.strftime("%Y年%m月%d日") %>
   </p>
 </div>
+<h4>タグ一覧</h4>
+  <% @task.labels.each do |label| %>
+  <div class="task_parts">
+    <p><%= label.series %></p>
+  </div>
+  <% end %>
 
 
 <%= link_to t('view.edit'), edit_task_path(@task) %> |

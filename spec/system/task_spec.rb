@@ -13,6 +13,12 @@ RSpec.describe 'タスク管理機能', type: :system do
     @task2 = create(:task2, user_id: @user.id)
     @task3 = create(:task3, user_id: @user.id)
 
+    @test_label1 = create(:label1, user_id: @user.id)
+    @test_label2 = create(:label2, user_id: @user.id)
+    @test_label3 = create(:label3, user_id: @user.id)
+    @test_label4 = create(:label4, user_id: @user2.id)
+
+
   end
 
   describe 'ログイン,ログアウト' do
@@ -69,7 +75,7 @@ RSpec.describe 'タスク管理機能', type: :system do
       it 'ユーザーを新規作成することができる' do
         visit new_admin_user_path
         fill_in 'user[name]', with: "testですよ"
-        fill_in 'user[email]', with: "test@gmail.com" 
+        fill_in 'user[email]', with: "test@gmail.com"
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_confirmation]', with: 'password'
         click_button 'commit'
@@ -91,7 +97,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         visit admin_users_path
         all('tbody td')[5].click_link '編集'
         fill_in 'user[name]', with: "testですよ"
-        fill_in 'user[email]', with: "test@gmail.com" 
+        fill_in 'user[email]', with: "test@gmail.com"
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_confirmation]', with: 'password'
         click_button 'commit'
@@ -126,6 +132,23 @@ RSpec.describe 'タスク管理機能', type: :system do
       it '作成済みのタスクが表示されること' do
         visit tasks_path
         expect(page).to have_content 'fugafuga'
+      end
+
+      it '複数のラベルをタスクにつけられること' do
+        visit new_task_path
+        fill_in 'task[title]', with: 'testtitle'
+        fill_in 'task[content]', with: 'test'
+        select '高', from: 'task[importance]'
+        select '完了', from: 'task[status]'
+        # check "testlabel1"
+        check "task_label_ids_#{@test_label1.id}"
+        check "task_label_ids_#{@test_label2.id}"
+
+        # check "#test_label_ids_" + "#{@test_label2.id}"
+        click_button '登録する'
+
+        expect(page).to have_content @test_label1.series
+        expect(page).to have_content @test_label2.series
       end
 
     end
@@ -174,7 +197,6 @@ RSpec.describe 'タスク管理機能', type: :system do
     context '必要項目を入力して、createボタンを押した場合' do
       it 'データが保存されること' do
         visit new_task_path
-        # binding.irb
         fill_in 'task[title]', with: 'テストタイトルffffffffffff'
         fill_in 'task[content]', with: 'テストコンテンツ'
         select '高', from: 'task[importance]'
@@ -182,6 +204,40 @@ RSpec.describe 'タスク管理機能', type: :system do
         click_button '登録する'
         visit tasks_path
         expect(page).to have_content '高'
+      end
+    end
+  end
+
+  describe 'タスク編集画面' do
+    before do
+      visit new_session_path
+      fill_in 'session[email]', with: @user.email
+      fill_in 'session[password]', with: 'password'
+      click_on 'commit'
+    end
+    context 'タスクを編集する時' do
+      it 'ラベルも一緒に編集できること' do
+        visit edit_task_path(@task1)
+        check "task_label_ids_#{@test_label1.id}"
+        check "task_label_ids_#{@test_label3.id}"
+        click_button '更新する'
+        expect(page).to have_content @test_label1.series, @test_label3.series
+      end
+    end
+  end
+
+  describe 'ラベル作成画面' do
+    before do
+      visit new_session_path
+      fill_in 'session[email]', with: @user.email
+      fill_in 'session[password]', with: 'password'
+      click_on 'commit'
+    end
+
+    context 'ユーザーが任意のラベルを作成した時' do
+      it '自分が作ったラベルしか使えないように' do
+        visit new_task_path
+        expect(page).not_to have_content @user2.labels
       end
     end
   end
