@@ -218,7 +218,6 @@ RSpec.describe 'タスク管理機能', type: :system do
     context 'タスクを編集する時' do
       it 'ラベルも一緒に編集できること' do
         visit edit_task_path(@task1)
-        binding.irb
         check "task_label_ids_#{@test_label1.id}"
         check "task_label_ids_#{@test_label3.id}"
         click_button '更新する'

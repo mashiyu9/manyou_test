@@ -20,8 +20,6 @@ ActiveRecord::Schema.define(version: 2019_12_22_205247) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.index ["series"], name: "index_labels_on_series", unique: true
-    t.index ["user_id", "series"], name: "user_id_series_index", unique: true
     t.index ["user_id"], name: "index_labels_on_user_id"
   end
 
